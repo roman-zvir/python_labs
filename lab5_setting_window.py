@@ -17,12 +17,14 @@ fg_var = tk.StringVar()
 root.geometry("200x200")
 root.resizable(False, False)
 
+
 # Handlers
 def handle_close():
     global top_level
     top_level.grab_release()
     top_level.destroy()
     top_level = None
+
 
 def handle_ok():
     label.config(
@@ -33,8 +35,10 @@ def handle_ok():
     )
     handle_close()
 
+
 def handle_cancel():
     handle_close()
+
 
 def handle_adjust():
     global top_level
@@ -139,6 +143,7 @@ def handle_adjust():
 
     top_level.grab_set()
 
+
 # Default handler
 def handle_default():
     # Reset label to default settings
@@ -151,6 +156,7 @@ def handle_default():
         height=3,
         fg="black",
     )
+
 
 # Initialize label with all properties
 label = tk.Label(

@@ -116,6 +116,7 @@ var_status.set("False")
 labelframe_button = tk.LabelFrame(root)
 labelframe_button.pack(padx=10, pady=10)
 
+
 # Insert button
 def handle_insert():
     name = var_name.get()
@@ -134,12 +135,14 @@ def handle_insert():
     var_price.set(0)
     var_status.set("False")
 
+
 button_insert = tk.Button(
     labelframe_button,
     text="Insert",
     command=handle_insert,
 )
 button_insert.grid(row=0, column=0, padx=5)
+
 
 # Delete button
 def handle_delete():
@@ -148,12 +151,14 @@ def handle_delete():
         return
     tree.delete(selection[0])
 
+
 button_delete = tk.Button(
     labelframe_button,
     text="Delete",
     command=handle_delete,
 )
 button_delete.grid(row=0, column=1, padx=5)
+
 
 # Get item button
 def handle_get_item():
@@ -167,12 +172,14 @@ def handle_get_item():
     var_price.set(values[3])
     var_status.set(values[4])
 
+
 button_get = tk.Button(
     labelframe_button,
     text="Get",
     command=handle_get_item,
 )
 button_get.grid(row=0, column=2, padx=5)
+
 
 # Set button
 def handle_set():
@@ -197,6 +204,7 @@ def handle_set():
     var_power_capacity.set(0)
     var_price.set(0)
     var_status.set("False")
+
 
 button_set = tk.Button(
     labelframe_button,

@@ -4,10 +4,7 @@ root = tk.Tk()
 
 # Entry ---------------------------------------------------------------
 entry_var = tk.StringVar()
-entry = tk.Entry(
-    bg="white",
-    textvariable=entry_var
-)
+entry = tk.Entry(bg="white", textvariable=entry_var)
 entry.pack()
 
 # Radiobutton --------------------------------------------------------
@@ -98,13 +95,16 @@ optionmenu_var = tk.StringVar()
 optionmenu = tk.OptionMenu(
     root,
     optionmenu_var,
-    "Nano", "Micro", "Milli",
+    "Nano",
+    "Micro",
+    "Milli",
 )
 optionmenu.pack()
 
 # Label -------------------------------------------------------------
 label = tk.Label(bg="white")
 label.pack()
+
 
 # Function to get values ---------------------------------------------
 def get_values():
@@ -146,6 +146,7 @@ def get_values():
 
     # Update label with counts
     label.config(text=f"Nano={nano_cntr}, Micro={micro_cntr}, Milli={milli_cntr}")
+
 
 # Button -------------------------------------------------------------
 button = tk.Button(

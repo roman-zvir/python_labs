@@ -20,7 +20,7 @@ subjects = [
     "Microservices Architecture",
     "Testing and Debugging",
     "Virtualization with KVM/QEMU",
-    "Cloud Providers (AWS, Azure, GCP)"
+    "Cloud Providers (AWS, Azure, GCP)",
 ]
 
 root = tk.Tk()
@@ -38,6 +38,7 @@ label_surname.grid(row=0, column=1)
 label_semester = tk.Label(text="Semester number:", width=20)
 label_semester.grid(row=0, column=2)
 
+
 # Functions
 def on_keyrelease(event):
     value = entry.get().strip().lower()
@@ -53,6 +54,7 @@ def on_keyrelease(event):
     else:
         listbox.grid_remove()
 
+
 def on_listbox_select(event):
     if listbox.curselection():
         selected = listbox.get(listbox.curselection())
@@ -64,14 +66,17 @@ def on_listbox_select(event):
         listbox.grid_remove()
         surname_entry.focus_set()
 
+
 def validate_subject(symbol):
     return symbol.isalnum() or symbol in [" ", "-", "(", ")", ".", ","]
+
 
 def invalid_subject():
     label_status.config(
         fg="red",
-        text="Subject: Only letters, numbers, spaces, commas, dashes, and parentheses allowed"
+        text="Subject: Only letters, numbers, spaces, commas, dashes, and parentheses allowed",
     )
+
 
 entry_vcmd = root.register(validate_subject)
 entry_invcmd = root.register(invalid_subject)
@@ -83,23 +88,22 @@ entry = tk.Entry(
 )
 entry.grid(row=1, column=0, sticky="we", padx=5, pady=5)
 
+
 def validate_semester(semester):
     return semester.isdecimal() or semester == ""
 
+
 def invalid_semester():
-    label_status.config(
-        fg="red",
-        text="Semester: number only 1-8"
-    )
+    label_status.config(fg="red", text="Semester: number only 1-8")
+
 
 def validate_surname(value):
     return len(value) <= 20
 
+
 def invalid_surname():
-    label_status.config(
-        fg="red",
-        text="Surname: max 20 characters"
-    )
+    label_status.config(fg="red", text="Surname: max 20 characters")
+
 
 spinbox_vcmd = root.register(validate_semester)
 spinbox_invcmd = root.register(invalid_semester)
@@ -128,6 +132,7 @@ listbox = tk.Listbox(height=3)
 listbox.grid(row=2, column=0, sticky="we", padx=5, pady=5)
 listbox.grid_remove()
 
+
 def handle_button():
     subject = entry.get()
     semester = int(spinbox.get())
@@ -139,8 +144,9 @@ def handle_button():
         return
     label_status.config(
         fg="black",
-        text=f"Subject: {entry.get()}, Surname: {surname_entry.get()}, semester: {spinbox.get()}"
+        text=f"Subject: {entry.get()}, Surname: {surname_entry.get()}, semester: {spinbox.get()}",
     )
+
 
 button = tk.Button(
     text="Send Form",

@@ -29,11 +29,14 @@ label.pack(fill="x", expand=False, side="bottom", padx=5, pady=5)
 cell_center_x = grid_spacing / 2
 cell_center_y = grid_spacing / 2
 figure = canvas.create_oval(
-    cell_center_x - oval_width / 2, cell_center_y - oval_height / 2,
-    cell_center_x + oval_width / 2, cell_center_y + oval_height / 2,
+    cell_center_x - oval_width / 2,
+    cell_center_y - oval_height / 2,
+    cell_center_x + oval_width / 2,
+    cell_center_y + oval_height / 2,
     width=0,
     fill="black",
 )
+
 
 # Functions
 def draw_grid():
@@ -45,16 +48,20 @@ def draw_grid():
     for y in range(0, height, grid_spacing):
         canvas.create_line(0, y, width, y, fill="lightgray", tags="grid")
 
+
 def handle_resize(event):
     draw_grid()
 
+
 def show_coords(event):
     label.config(text=f"x: {event.x}, y: {event.y}")
+
 
 def handle_up(event):
     x1, y1, x2, y2 = canvas.coords(figure)
     dy = -grid_spacing if (y1 > grid_spacing) else 0
     canvas.move(figure, 0, dy)
+
 
 def handle_down(event):
     x1, y1, x2, y2 = canvas.coords(figure)
@@ -62,16 +69,19 @@ def handle_down(event):
     dy = grid_spacing if (y1 < y_max - grid_spacing) else 0
     canvas.move(figure, 0, dy)
 
+
 def handle_left(event):
     x1, y1, x2, y2 = canvas.coords(figure)
     dx = -grid_spacing if (x1 > grid_spacing) else 0
     canvas.move(figure, dx, 0)
+
 
 def handle_right(event):
     x1, y1, x2, y2 = canvas.coords(figure)
     x_max = canvas.winfo_width()
     dx = grid_spacing if (x2 < x_max - grid_spacing) else 0
     canvas.move(figure, dx, 0)
+
 
 def handle_start_drag(event):
     global figure_x, figure_y
@@ -81,6 +91,7 @@ def handle_start_drag(event):
     canvas.config(cursor="hand2")
     canvas.tag_raise(figure)
 
+
 def handle_on_drag(event):
     global figure_x, figure_y
     dx = event.x - figure_x
@@ -88,6 +99,7 @@ def handle_on_drag(event):
     canvas.move(figure, dx, dy)
     figure_x = event.x
     figure_y = event.y
+
 
 def handle_end_drag(event):
     global figure_x, figure_y
@@ -107,6 +119,7 @@ def handle_end_drag(event):
     canvas.coords(figure, new_x1, new_y1, new_x1 + width, new_y1 + height)
     figure_x = 0
     figure_y = 0
+
 
 # Event bindings
 canvas.bind("<Configure>", handle_resize)
