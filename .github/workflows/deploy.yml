@@ -1,4 +1,4 @@
-name: Autoformat Python code
+name: Autoformat Python code and push
 
 on:
   push:
